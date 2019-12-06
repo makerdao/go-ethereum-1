@@ -161,4 +161,7 @@ type Config struct {
 	OverrideIstanbul *big.Int
 
 	StateDiff bool
+
+	// MuirGlacier block override (TODO: remove after the fork)
+	OverrideMuirGlacier *big.Int
 }
