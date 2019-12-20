@@ -64,8 +64,8 @@ func (sd *Payload) Encode() ([]byte, error) {
 
 // StateDiff is the final output structure from the builder
 type StateDiff struct {
-	BlockNumber     *big.Int      `json:"blockNumber"	  gencodec:"required"`
-	BlockHash       common.Hash   `json:"blockHash" 	  gencodec:"required"`
+	BlockNumber     *big.Int      `json:"blockNumber"     gencodec:"required"`
+	BlockHash       common.Hash   `json:"blockHash"       gencodec:"required"`
 	CreatedAccounts []AccountDiff `json:"createdAccounts" gencodec:"required"`
 	DeletedAccounts []AccountDiff `json:"deletedAccounts" gencodec:"required"`
 	UpdatedAccounts []AccountDiff `json:"updatedAccounts" gencodec:"required"`
@@ -76,7 +76,7 @@ type StateDiff struct {
 
 // AccountDiff holds the data for a single state diff node
 type AccountDiff struct {
-	Leaf    bool          `json:"leaf"	      gencodec:"required"`
+	Leaf    bool          `json:"leaf"        gencodec:"required"`
 	Key     []byte        `json:"key"         gencodec:"required"`
 	Value   []byte        `json:"value"       gencodec:"required"`
 	Proof   [][]byte      `json:"proof"       gencodec:"required"`
@@ -86,7 +86,7 @@ type AccountDiff struct {
 
 // StorageDiff holds the data for a single storage diff node
 type StorageDiff struct {
-	Leaf  bool     `json:"leaf"	       gencodec:"required"`
+	Leaf  bool     `json:"leaf"        gencodec:"required"`
 	Key   []byte   `json:"key"         gencodec:"required"`
 	Value []byte   `json:"value"       gencodec:"required"`
 	Proof [][]byte `json:"proof"       gencodec:"required"`
