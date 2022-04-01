@@ -95,7 +95,7 @@ func (ga *GenesisAlloc) flush(db ethdb.Database) (common.Hash, error) {
 			statedb.SetState(addr, key, value)
 		}
 	}
-	root, err := statedb.Commit(false)
+	root, _, err := statedb.Commit(false)
 	if err != nil {
 		return common.Hash{}, err
 	}
