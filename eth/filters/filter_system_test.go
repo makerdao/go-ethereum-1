@@ -920,7 +920,7 @@ func TestStateChangeSubscription(t *testing.T) {
 }
 
 func getAccountDiff(accountAddress common.Address, modifedAccount state.ModifiedAccount, t *testing.T) AccountDiff {
-	accountRlp, accountRlpErr := rlp.EncodeToBytes(modifedAccount.StateAccount)
+	accountRlp, accountRlpErr := rlp.EncodeToBytes(&modifedAccount.StateAccount)
 	if accountRlpErr != nil {
 		t.Error("Test failure:", t.Name())
 		t.Logf("Failed to encode account diff")
