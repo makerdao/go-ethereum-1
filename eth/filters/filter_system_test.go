@@ -749,7 +749,7 @@ func TestStateChangeSubscription(t *testing.T) {
 	var (
 		db             = rawdb.NewMemoryDatabase()
 		backend        = &testBackend{db: db}
-		api            = NewPublicFilterAPI(backend, false, deadline)
+		api            = NewFilterAPI(backend, false, deadline)
 		genesis        = (&core.Genesis{BaseFee: big.NewInt(params.InitialBaseFee)}).MustCommit(db)
 		numberOfBlocks = 3
 		chain, _       = core.GenerateChain(params.TestChainConfig, genesis, ethash.NewFaker(), db, numberOfBlocks, func(i int, gen *core.BlockGen) {})

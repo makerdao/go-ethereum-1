@@ -230,7 +230,7 @@ func (api *FilterAPI) NewHeads(ctx context.Context) (*rpc.Subscription, error) {
 	return rpcSub, nil
 }
 
-func (api *PublicFilterAPI) NewStateChanges(ctx context.Context, crit FilterCriteria) (*rpc.Subscription, error) {
+func (api *FilterAPI) NewStateChanges(ctx context.Context, crit FilterCriteria) (*rpc.Subscription, error) {
 	notifier, supported := rpc.NotifierFromContext(ctx)
 	if !supported {
 		return &rpc.Subscription{}, rpc.ErrNotificationsUnsupported
