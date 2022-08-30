@@ -116,7 +116,7 @@ func (ga *GenesisAlloc) flush(db ethdb.Database) error {
 			statedb.SetState(addr, key, value)
 		}
 	}
-	root, err := statedb.Commit(false)
+	root, _, err := statedb.Commit(false)
 	if err != nil {
 		return err
 	}
