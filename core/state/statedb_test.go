@@ -1043,7 +1043,7 @@ func TestFlushOrderDataLoss(t *testing.T) {
 			state.SetState(common.Address{a}, common.Hash{a, s}, common.Hash{a, s})
 		}
 	}
-	root, err := state.Commit(false)
+	root, _, err := state.Commit(false)
 	if err != nil {
 		t.Fatalf("failed to commit state trie: %v", err)
 	}

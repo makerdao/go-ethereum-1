@@ -338,5 +338,8 @@ func (b *backendMock) SubscribePendingLogsEvent(ch chan<- []*types.Log) event.Su
 func (b *backendMock) SubscribeRemovedLogsEvent(ch chan<- core.RemovedLogsEvent) event.Subscription {
 	return nil
 }
+func (b *backendMock) SubscribeStateChangeEvent(ch chan<- core.StateChangeEvent) event.Subscription {
+	return nil
+}
 
 func (b *backendMock) Engine() consensus.Engine { return nil }

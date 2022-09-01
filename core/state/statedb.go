@@ -945,7 +945,7 @@ func (s *StateDB) Commit(deleteEmptyObjects bool) (common.Hash, StateChanges, er
 			// Merge the dirty nodes of storage trie into global set
 			if set != nil {
 				if err := nodes.Merge(set); err != nil {
-					return common.Hash{}, err
+					return common.Hash{}, StateChanges{}, err
 				}
 				storageTrieNodes += set.Len()
 			}
@@ -974,7 +974,7 @@ func (s *StateDB) Commit(deleteEmptyObjects bool) (common.Hash, StateChanges, er
 	// Merge the dirty nodes of account trie into global set
 	if set != nil {
 		if err := nodes.Merge(set); err != nil {
-			return common.Hash{}, err
+			return common.Hash{}, StateChanges{}, err
 		}
 		accountTrieNodes = set.Len()
 	}
@@ -1012,7 +1012,7 @@ func (s *StateDB) Commit(deleteEmptyObjects bool) (common.Hash, StateChanges, er
 	}
 
 	if err := s.db.TrieDB().Update(nodes); err != nil {
-		return common.Hash{}, err
+		return common.Hash{}, StateChanges{}, err
 	}
 	s.originalRoot = root
 	return root, stateChanges, err

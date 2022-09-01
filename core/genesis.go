@@ -97,7 +97,8 @@ func (ga *GenesisAlloc) deriveHash() (common.Hash, error) {
 			statedb.SetState(addr, key, value)
 		}
 	}
-	return statedb.Commit(false)
+	root, _, err := statedb.Commit(false)
+	return root, err
 }
 
 // flush is very similar with deriveHash, but the main difference is
