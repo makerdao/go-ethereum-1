@@ -2502,6 +2502,7 @@ func (bc *BlockChain) SetBlockValidatorAndProcessorForTesting(v Validator, p Pro
 // It is thread-safe and can be called repeatedly without side effects.
 func (bc *BlockChain) SetTrieFlushInterval(interval time.Duration) {
 	atomic.StoreInt64(&bc.flushInterval, int64(interval))
+}
 
 // SubscribeStateChangeEvent registers a subscription StateChangeEvent.
 func (bc *BlockChain) SubscribeStateChangeEvent(ch chan<- StateChangeEvent) event.Subscription {

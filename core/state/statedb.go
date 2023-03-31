@@ -969,7 +969,7 @@ type StateChanges map[common.Address]ModifiedAccount
 func (s *StateDB) Commit(deleteEmptyObjects bool) (common.Hash, StateChanges, error) {
 	// Short circuit in case any database failure occurred earlier.
 	if s.dbErr != nil {
-		return common.Hash{}, fmt.Errorf("commit aborted due to earlier error: %v", s.dbErr)
+		return common.Hash{}, nil, fmt.Errorf("commit aborted due to earlier error: %v", s.dbErr)
 	}
 
 	// Finalize any pending changes and merge everything into the tries
@@ -1040,10 +1040,8 @@ func (s *StateDB) Commit(deleteEmptyObjects bool) (common.Hash, StateChanges, er
 	if metrics.EnabledExpensive {
 		start = time.Now()
 	}
-	root, set, err := s.trie.Commit(true)
-	if err != nil {
-		return common.Hash{}, StateChanges{}, err
-	}
+	root, set := s.trie.Commit(true)
+
 	// Merge the dirty nodes of account trie into global set
 	if set != nil {
 		if err := nodes.Merge(set); err != nil {

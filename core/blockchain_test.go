@@ -3450,7 +3450,7 @@ func testSendingStateChangeEvents(t *testing.T, numberOfEventsToSend int) {
 		newEventCh = make(chan bool)
 	)
 
-	blockchain, _ := NewBlockChain(db, nil, gspec.Config, ethash.NewFaker(), vm.Config{}, nil, nil)
+	blockchain, _ := NewBlockChain(db, nil, gspec, nil, ethash.NewFaker(), vm.Config{}, nil, nil)
 	defer blockchain.Stop()
 
 	stateChangeCh := make(chan StateChangeEvent)
