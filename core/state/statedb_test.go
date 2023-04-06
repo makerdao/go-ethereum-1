@@ -115,9 +115,8 @@ func TestStateChangesEmittedFromCommit(t *testing.T) {
 
 func getNewModifiedAccount() ModifiedAccount {
 	//emptyRoot is the known root hash of an empty trie.
-	//var emptyRoot = common.HexToHash("56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421")
-	//var emptyCode = common.HexToHash("c5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470")
-	//var emptyCodeHash = crypto.Keccak256Hash(nil)
+	var emptyRoot = common.HexToHash("56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421")
+	var emptyCodeHash = types.EmptyCodeHash.Bytes()
 
 	return ModifiedAccount{
 		Storage: make(map[common.Hash]common.Hash),
